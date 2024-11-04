@@ -1,0 +1,131 @@
+/* Đặt màu nền cho toàn bộ trang */
+body {
+    background-color: #f8f9fa; /* Màu nền sáng */
+    font-family: Arial, sans-serif; /* Font chữ dễ đọc */
+}
+
+/* Navbar background */
+.navbar {
+    background-color: #333; /* Dark background color */
+    color: white; /* White text color */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navbar-nav .nav-link {
+    color: #ddd; /* Lighter text color for links */
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: white; /* White text on hover */
+}
+
+.navbar-nav .dropdown-menu {
+    background-color: #333; /* Match the background of the navbar */
+    border: none; /* Remove border */
+}
+
+.navbar-nav .dropdown-item {
+    color: #ddd;
+}
+
+.navbar-nav .dropdown-item:hover {
+    color: white; /* White text on hover */
+    background-color: #444; /* Slightly lighter background on hover */
+}
+
+/* Icon styling */
+.navbar-nav .nav-link i {
+    margin-right: 5px;
+}
+
+/* Thay đổi kiểu cho container */
+.container {
+    max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+    margin: auto; /* Căn giữa */
+    padding: 20px; /* Thêm khoảng đệm */
+}
+
+/* Tiêu đề */
+h2 {
+    text-align: center; /* Căn giữa tiêu đề */
+    color: #343a40; /* Màu chữ tối */
+    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+}
+
+/* Card */
+.card {
+    border: 1px solid #007bff; /* Đường viền cho card */
+    border-radius: 10px; /* Bo góc cho card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng cho card */
+}
+
+/* Table */
+.table {
+    width: 100%; /* Đặt chiều rộng bảng là 100% */
+    border-collapse: collapse; /* Hợp nhất các đường biên */
+}
+
+.table th, .table td {
+    text-align: center; /* Căn giữa nội dung */
+    padding: 15px; /* Thêm khoảng đệm cho các ô */
+}
+
+.table th {
+    background-color: #007bff; /* Màu nền cho tiêu đề */
+    color: white; /* Màu chữ cho tiêu đề */
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Màu nền cho hàng chẵn */
+}
+
+.table tr:hover {
+    background-color: #e9ecef; /* Màu nền khi di chuột qua hàng */
+}
+
+/* Nút */
+.btn {
+    padding: 10px 15px; /* Thay đổi kích thước nút */
+    border-radius: 5px; /* Bo góc cho nút */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển tiếp */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Màu nền cho nút xóa */
+    color: white; /* Màu chữ cho nút xóa */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Màu nền khi di chuột qua nút xóa */
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .table th, .table td {
+        font-size: 14px; /* Kích thước chữ nhỏ hơn trên thiết bị nhỏ */
+        padding: 10px; /* Giảm khoảng đệm */
+    }
+
+    .container {
+        padding: 0 15px; /* Thêm khoảng đệm cho container */
+    }
+}

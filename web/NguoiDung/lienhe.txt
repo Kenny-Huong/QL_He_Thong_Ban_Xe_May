@@ -1,0 +1,83 @@
+<?php
+require_once('../db/dbhelper.php');
+
+$hovaten = '';
+$email = '';
+$noidung = '';
+$errors = [];
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['hovaten'])) {
+        $hovaten = $_POST['hovaten'];
+        if (empty($hovaten)) {
+            $errors[] = "Họ và tên không được để trống.";
+        }
+    }
+
+    if (isset($_POST['email'])) {
+        $email = $_POST['email'];
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Email không hợp lệ.";
+        }
+    }
+
+    if (isset($_POST['noidung'])) {
+        $noidung = $_POST['noidung'];
+        if (empty($noidung)) {
+            $errors[] = "Nội dung không được để trống.";
+        }
+    }
+
+    // Nếu không có lỗi, lưu dữ liệu vào cơ sở dữ liệu
+    if (empty($errors)) {
+        $sql = "INSERT INTO lienhe (hovaten, email, noidung) VALUES ('$hovaten', '$email', '$noidung')";
+        if (execute($sql)) {
+            echo "<script>alert('Gửi thông tin thành công!'); window.location.href = 'home.php';</script>";
+        } else {
+            echo "<script>alert('Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại.');</script>";
+        }
+    } else {
+        foreach ($errors as $error) {
+            echo "<script>alert('$error');</script>";
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Liên Hệ - MOWO</title>
+    <link href="../CSS/styles.css" rel="stylesheet" />
+</head>
+<body class="bg-primary">
+    <div class="container mt-5">
+        <h2 class="text-center text-white">Liên Hệ Với Chúng Tôi</h2>
+        <div class="card shadow-lg border-0 rounded-lg mt-4">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <label for="hovaten">Họ và tên</label>
+                        <input type="text" class="form-control" id="hovaten" name="hovaten" value="<?php echo htmlspecialchars($hovaten); ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="noidung">Nội dung</label>
+                        <textarea class="form-control" id="noidung" name="noidung" rows="4" required><?php echo htmlspecialchars($noidung); ?></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gửi</button>
+                    <a href="home.php" class="btn btn-danger">Quay Trở Lại Trang Chủ</a>
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
